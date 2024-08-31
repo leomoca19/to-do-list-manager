@@ -4,8 +4,17 @@ The tasks will be stored in a local file so that the user’s to-do list persist
 '''
 
 
-def print_hi(name):
-    print(f'Hi, {name}')
+# Features to Implement:
+# Add Task: Allow users to add new tasks to the to-do list.
+# View Tasks: Display all current tasks with an option to view completed and pending tasks separately.
+# Update Task: Enable users to mark tasks as complete or edit the task details.
+# Delete Task: Allow users to delete tasks from the list.
+# Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
+
+
+def welcome():
+    print('Welcome to my to-do list manager by Leonardo')
+
 
 
 # Press the green button in the gutter to run the script.
