@@ -16,6 +16,8 @@ def welcome():
     print('Welcome to my to-do list manager by Leonardo')
 
 
+def goodbye():
+    print('Goodbye!')
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
