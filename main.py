@@ -3,6 +3,8 @@ Simple command-line application to manage tasks, including adding, updating, del
 The tasks will be stored in a local file so that the user’s to-do list persists between sessions.
 '''
 
+from datetime import datetime
+
 
 # Features to Implement:
 # Add Task: Allow users to add new tasks to the to-do list.
