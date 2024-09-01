@@ -13,6 +13,7 @@ from datetime import datetime
 # Delete Task: Allow users to delete tasks from the list.
 # Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
 
+DEBUG = True
 
 def welcome():
     print('Welcome to my to-do list manager by Leonardo')
