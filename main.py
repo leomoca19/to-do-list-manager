@@ -18,7 +18,7 @@ tasks = []
 
 
 def welcome():
-    print('Welcome to my to-do list manager by Leonardo')
+    print('Welcome to a to-do list manager by Leonardo')
 
 
 def goodbye():
