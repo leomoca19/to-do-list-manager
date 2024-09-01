@@ -23,6 +23,27 @@ def welcome():
 
 def goodbye():
     print('Goodbye!')
+def add_task(task=None):
+    """
+    Adds a new tasks to the to-do list by prompting or argument
+    """
+
+    if task:
+        tasks.append(task)
+
+    else:
+        description = input() if not DEBUG else 'sample'
+
+        new_task = {
+            'id': len(tasks) + 1,
+            'description': description,
+            'status': 'pending',
+            'date': datetime.now().date().strftime("%b-%d-%Y")
+        }
+
+        tasks.append(new_task)
+
+
 
 
 if __name__ == '__main__':
