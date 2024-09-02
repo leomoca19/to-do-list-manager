@@ -24,7 +24,7 @@ class Task:
         self.date = datetime.now().date().strftime("%b-%d-%Y")
 
     def display(self):
-        print('-' * (len(self.description) + 15))
+        print('-' * (len(self.description) + 14))
         print('Task ID:', self.id)
         print(self.date, '-', self.description)
         print(self.status)
