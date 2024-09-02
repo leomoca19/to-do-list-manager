@@ -5,9 +5,7 @@ The tasks will be stored in a local file so that the user’s to-do list persist
 
 from datetime import datetime
 
-
 # Features to Implement:
-# Update Task: Enable users to mark tasks as complete or edit the task details.
 # Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
 
 DEBUG = True
