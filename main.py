@@ -62,7 +62,7 @@ def add_task(task=None):
         tasks.append(Task(description))
 
 
-def edit_task():
+def update_task():
     pass
 
 
