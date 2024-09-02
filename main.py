@@ -41,6 +41,9 @@ def add_task(task=None):
 
     else:
         description = input() if not DEBUG else 'sample'
+        tasks.append(Task(description))
+
+
 
         new_task = {
             'id': len(tasks) + 1,
