@@ -31,6 +31,10 @@ def prompt(question, answers=None):
     :return: the validated answer
     """
 
+    # display the question,
+    # display the accepted answers,
+    # display a character to show the user should input
+
     print_(question)
 
     if answers:
