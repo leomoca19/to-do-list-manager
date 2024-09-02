@@ -42,9 +42,9 @@ def prompt(question, answers=None):
 
         if answers[1]:
             for i in range(1, len(answers[1])):
-                print_(answers[i], '|')
+                print_('|', answers[i])
 
-    print(question, answers, ':', end='')
+    print_(': ')
 
     if answer := input().lower() in answers:
         pass
