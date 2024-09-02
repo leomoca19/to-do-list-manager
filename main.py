@@ -36,6 +36,19 @@ def welcome():
 
 def goodbye():
     print('Goodbye!')
+
+
+def view_tasks(status=None):
+    """
+    Display all current tasks with an option to view completed and pending tasks separately.
+    """
+
+    for task in tasks:
+        if status and status != task.status:
+            continue
+        task.display()
+
+
 def add_task(task=None):
     """
     Adds a new tasks to the to-do list by prompting or argument
