@@ -5,6 +5,7 @@ The tasks will be stored in a local file so that the user’s to-do list persist
 
 # tm stands for task manager
 import task as tm
+from utilities import welcome, goodbye
 
 # Features to Implement:
 # Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
