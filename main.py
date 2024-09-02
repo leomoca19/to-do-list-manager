@@ -66,12 +66,11 @@ def edit_task():
     pass
 
 
-        new_task = {
-            'id': len(tasks) + 1,
-            'description': description,
-            'status': 'pending',
-            'date': datetime.now().date().strftime("%b-%d-%Y")
-        }
+def remove_task(id):
+    for i in range(len(tasks)):
+        if tasks[i].id == id:
+            tasks[i] = None
+            return
 
         tasks.append(new_task)
 
