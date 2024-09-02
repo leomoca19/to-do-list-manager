@@ -9,23 +9,6 @@ import task as tm
 # Features to Implement:
 # Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
 
-DEBUG = True
-tasks = []
-
-
-class Task:
-    def __init__(self, description):
-        self.id = len(tasks) + 1
-        self.description = description
-        self.status = 'pending'
-        self.date = datetime.now().date().strftime("%b-%d-%Y")
-
-    def display(self):
-        print('-' * (len(self.description) + 14))
-        print('Task ID:', self.id)
-        print(self.date, '-', self.description)
-        print(self.status)
-
 
 def welcome():
     print('Welcome to a to-do list manager by Leonardo')
