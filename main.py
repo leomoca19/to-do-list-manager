@@ -60,8 +60,43 @@ def add_task(task=None):
         tasks.append(Task(description))
 
 
-def update_task():
-    pass
+def update_task(id):
+    """
+    Allow the user to mark tasks as complete and edit the task details
+    """
+
+    # add helper functions to reduce length
+    for task in tasks:
+        if task and task.id <= id:
+            print('Task selected: ')
+            task.display()
+            print()
+
+            repeat = True
+            while repeat:
+                print('Mark as completed? y|n: ', end='')
+
+                if answer := input().lower() in ['y', 'n']:
+                    repeat = False
+                    if answer == 'y':
+                        task.status = 'completed'
+
+                else:
+                    print('Bad input')
+
+            repeat = True
+            while repeat:
+                print('Update description? y|n: ', end='')
+
+                if input().lower() in ['y', 'n']:
+                    repeat = False
+                    print('New description: ', end='')
+                    task.description = input()
+
+                else:
+                    print('Bad input')
+
+            return
 
 
 def remove_task(id):
