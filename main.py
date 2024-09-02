@@ -24,6 +24,12 @@ class Task:
         self.status = 'pending'
         self.date = datetime.now().date().strftime("%b-%d-%Y")
 
+    def display(self):
+        print('-' * (len(self.description) + 15))
+        print('Task ID:', self.id)
+        print(self.date, '-', self.description)
+        print(self.status)
+
 
 def welcome():
     print('Welcome to a to-do list manager by Leonardo')
@@ -43,6 +49,9 @@ def add_task(task=None):
         description = input() if not DEBUG else 'sample'
         tasks.append(Task(description))
 
+
+def edit_task():
+    pass
 
 
         new_task = {
