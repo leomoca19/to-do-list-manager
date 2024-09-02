@@ -69,6 +69,9 @@ def edit_task():
 
 
 def remove_task(id):
+    """
+    Deletes a task from the list by id
+    """
     for i in range(len(tasks)):
         if tasks[i].id == id:
             tasks[i] = None
