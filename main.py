@@ -11,46 +11,6 @@ from utilities import welcome, goodbye
 # Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
 
 
-def welcome():
-    print('Welcome to a to-do list manager by Leonardo')
-
-
-def goodbye():
-    print('Goodbye!')
-
-
-def print_(*string):
-    """prints without a newline"""
-    print(*string, end='')
-
-
-def prompt(question, answers=None):
-    """
-
-    :param question: string to be displayed to ask for input
-    :param answers: a list of the possible accepted answers, accepts any answer if None
-    :return: the validated answer
-    """
-
-    # display the question,
-    # display the accepted answers,
-    # display a character to show the user should input
-
-    print_(question)
-
-    if answers:
-        print_(answers[0])
-
-        if answers[1]:
-            for i in range(1, len(answers[1])):
-                print_('|', answers[i])
-
-    print_(': ')
-
-    if answer := input().lower() in answers:
-        pass
-
-
 if __name__ == '__main__':
     welcome()
 
