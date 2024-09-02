@@ -7,9 +7,7 @@ from datetime import datetime
 
 
 # Features to Implement:
-# View Tasks: Display all current tasks with an option to view completed and pending tasks separately.
 # Update Task: Enable users to mark tasks as complete or edit the task details.
-# Delete Task: Allow users to delete tasks from the list.
 # Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
 
 DEBUG = True
