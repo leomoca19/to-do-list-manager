@@ -17,6 +17,14 @@ DEBUG = True
 tasks = []
 
 
+class Task:
+    def __init__(self, description):
+        self.id = len(tasks) + 1
+        self.description = description
+        self.status = 'pending'
+        self.date = datetime.now().date().strftime("%b-%d-%Y")
+
+
 def welcome():
     print('Welcome to a to-do list manager by Leonardo')
 
