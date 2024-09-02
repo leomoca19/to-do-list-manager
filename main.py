@@ -42,11 +42,13 @@ def view_tasks(status=None):
     """
     Display all current tasks with an option to view completed and pending tasks separately.
     """
-
+    print()
     for task in tasks:
-        if status and status != task.status:
-            continue
-        task.display()
+        if task:
+            if status and status != task.status:
+                continue
+            task.display()
+    print()
 
 
 def add_task(task=None):
