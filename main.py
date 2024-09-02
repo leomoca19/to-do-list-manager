@@ -34,6 +34,11 @@ def goodbye():
     print('Goodbye!')
 
 
+def print_(*string):
+    """prints without a newline"""
+    print(*string, end='')
+
+
 def view_tasks(status=None):
     """
     Display all current tasks with an option to view completed and pending tasks separately.
@@ -65,7 +70,6 @@ def update_task(id):
     Allow the user to mark tasks as complete and edit the task details
     """
 
-    # add helper functions to reduce length
     for task in tasks:
         if task and task.id <= id:
             print('Task selected: ')
@@ -108,11 +112,24 @@ def remove_task(id):
             tasks[i] = None
             return
 
-        tasks.append(new_task)
+
+def save_to_file():
+    pass
 
 
+def load_from_file():
+    pass
 
 
 if __name__ == '__main__':
     welcome()
+
+    for _ in range(3):
+        add_task()
+
+    view_tasks()
+    remove_task(2)
+    update_task(3)
+    view_tasks()
+
     goodbye()
