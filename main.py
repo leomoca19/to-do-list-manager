@@ -39,6 +39,29 @@ def print_(*string):
     print(*string, end='')
 
 
+def prompt(question, answers=None):
+    """
+
+    :param question: string to be displayed to ask for input
+    :param answers: a list of the possible accepted answers, accepts any answer if None
+    :return: the validated answer
+    """
+
+    print_(question)
+
+    if answers:
+        print_(answers[0])
+
+        if answers[1]:
+            for i in range(1, len(answers[1])):
+                print_(answers[i], '|')
+
+    print(question, answers, ':', end='')
+
+    if answer := input().lower() in answers:
+        pass
+
+
 def view_tasks(status=None):
     """
     Display all current tasks with an option to view completed and pending tasks separately.
