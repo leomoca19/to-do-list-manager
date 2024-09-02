@@ -7,7 +7,6 @@ from datetime import datetime
 
 
 # Features to Implement:
-# Add Task: Allow users to add new tasks to the to-do list.
 # View Tasks: Display all current tasks with an option to view completed and pending tasks separately.
 # Update Task: Enable users to mark tasks as complete or edit the task details.
 # Delete Task: Allow users to delete tasks from the list.
