@@ -71,6 +71,10 @@ def update_task(id):
                 print('Bad input')
 
 
+def find_by_description(description):
+    pass
+
+
 def remove_task(id):
     """
     Deletes a task from the list by id
