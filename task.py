@@ -94,8 +94,6 @@ def save_to_file(file_name):
     #     json.dump(tasks, file)
 
 
-
-
 def load_from_file():
     """
     Loads tasks in a file
