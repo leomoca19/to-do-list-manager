@@ -88,8 +88,19 @@ def remove_task(id):
             return
 
 
-def save_to_file():
-    pass
+def save_to_file(file_name):
+    """
+    Saves tasks in a file
+    """
+
+    with open(file_name, 'w') as file:
+        for task in tasks:
+            file.write(task)
+
+    # with open(filename, 'w') as file:
+    #     json.dump(tasks, file)
+
+
 
 
 def load_from_file():
