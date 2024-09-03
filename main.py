@@ -16,7 +16,7 @@ if __name__ == '__main__':
         add_task(t)
 
     view_tasks()
-    remove_task(2)
+    remove_task(2)  # error - adapt to removed id property
     update_task(3)
     view_tasks()
 
