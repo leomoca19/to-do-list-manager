@@ -103,4 +103,14 @@ def save_to_file(file_name):
 
 
 def load_from_file():
+    """
+    Loads tasks in a file
+    """
+
+    # global tasks
+    # try:
+    #     with open(filename, 'r') as file:
+    #         tasks = json.load(file)
+    # except FileNotFoundError:
+    #     tasks = []
     pass
