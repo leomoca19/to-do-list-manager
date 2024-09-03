@@ -14,11 +14,8 @@ class Task:
         self.status = 'pending'
         self.date = datetime.now().date().strftime("%b-%d-%Y")
 
-    def display(self):
-        print('-' * (len(self.description) + 14))
-        print('Task ID:', self.id)
-        print(self.date, '-', self.description)
-        print(self.status)
+    def __str__(self):
+        return f'Task: {self.description}\n{self.date}\n{self.status}'
 
 
 def view_tasks(status=None):
@@ -30,7 +27,7 @@ def view_tasks(status=None):
         if task:
             if status and status != task.status:
                 continue
-            task.display()
+            print(task)
     print()
 
 
