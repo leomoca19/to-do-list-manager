@@ -4,30 +4,29 @@ DEBUG = True
 tasks = []
 
 
+# Features to Implement:
+# Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
+
+
 class Task:
     def __init__(self, description):
-        self.id = len(tasks) + 1
         self.description = description
         self.status = 'pending'
         self.date = datetime.now().date().strftime("%b-%d-%Y")
 
-    def display(self):
-        print('-' * (len(self.description) + 14))
-        print('Task ID:', self.id)
-        print(self.date, '-', self.description)
-        print(self.status)
+    def __str__(self):
+        return f'Task: {self.description}\n{self.date}\n{self.status}'
 
 
 def view_tasks(status=None):
     """
     Display all current tasks with an option to view completed and pending tasks separately.
     """
-    print()
     for task in tasks:
         if task:
             if status and status != task.status:
                 continue
-            task.display()
+            print(task)
     print()
 
 
@@ -48,38 +47,34 @@ def update_task(id):
     """
     Allow the user to mark tasks as complete and edit the task details
     """
+    if task := tasks[id]:
+        print('Task selected: ')
+        task.display()
+        print()
 
-    for task in tasks:
-        if task and task.id <= id:
-            print('Task selected: ')
-            task.display()
-            print()
+        repeat = True
+        while repeat:
+            print('Mark as completed? y|n: ', end='')
 
-            repeat = True
-            while repeat:
-                print('Mark as completed? y|n: ', end='')
+            if answer := input().lower() in ['y', 'n']:
+                repeat = False
+                if answer == 'y':
+                    task.status = 'completed'
 
-                if answer := input().lower() in ['y', 'n']:
-                    repeat = False
-                    if answer == 'y':
-                        task.status = 'completed'
+            else:
+                print('Bad input')
 
-                else:
-                    print('Bad input')
+        repeat = True
+        while repeat:
+            print('Update description? y|n: ', end='')
 
-            repeat = True
-            while repeat:
-                print('Update description? y|n: ', end='')
+            if input().lower() in ['y', 'n']:
+                repeat = False
+                print('New description: ', end='')
+                task.description = input()
 
-                if input().lower() in ['y', 'n']:
-                    repeat = False
-                    print('New description: ', end='')
-                    task.description = input()
-
-                else:
-                    print('Bad input')
-
-            return
+            else:
+                print('Bad input')
 
 
 def remove_task(id):
@@ -92,9 +87,30 @@ def remove_task(id):
             return
 
 
-def save_to_file():
-    pass
+def save_to_file(file_name):
+    """
+    Saves tasks in a file
+    """
+
+    with open(file_name, 'w') as file:
+        for task in tasks:
+            file.write(task)
+
+    # with open(filename, 'w') as file:
+    #     json.dump(tasks, file)
+
+
 
 
 def load_from_file():
+    """
+    Loads tasks in a file
+    """
+
+    # global tasks
+    # try:
+    #     with open(filename, 'r') as file:
+    #         tasks = json.load(file)
+    # except FileNotFoundError:
+    #     tasks = []
     pass
