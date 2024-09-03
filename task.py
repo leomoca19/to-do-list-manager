@@ -15,7 +15,7 @@ class Task:
         self.date = datetime.now().date().strftime("%b-%d-%Y")
 
     def __str__(self):
-        return f'Task: {self.description}\n{self.date}\n{self.status}'
+        return f'{self.date} - {self.status}: {self.description}'
 
 
 def view_tasks(status=None):
