@@ -34,13 +34,8 @@ def add_task(task=None):
     """
     Adds a new tasks to the to-do list by prompting or argument
     """
-
-    if task:
-        tasks.append(task)
-
-    else:
-        description = input() if not DEBUG else 'sample'
-        tasks.append(Task(description))
+    new_task = task if task else Task(input())
+    tasks.append(new_task)
 
 
 def update_task(id):
