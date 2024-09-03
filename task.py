@@ -4,6 +4,10 @@ DEBUG = True
 tasks = []
 
 
+# Features to Implement:
+# Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
+
+
 class Task:
     def __init__(self, description):
         self.id = len(tasks) + 1

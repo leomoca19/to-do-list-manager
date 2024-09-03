@@ -6,9 +6,6 @@ The tasks will be stored in a local file so that the user’s to-do list persist
 from task import add_task, view_tasks, update_task, remove_task
 from utilities import welcome, goodbye
 
-# Features to Implement:
-# Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
-
 
 if __name__ == '__main__':
     welcome()
