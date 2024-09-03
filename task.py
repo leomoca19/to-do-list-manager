@@ -1,6 +1,5 @@
 from datetime import datetime
 
-DEBUG = True
 tasks = []
 
 
