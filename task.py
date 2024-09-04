@@ -1,5 +1,6 @@
 from datetime import datetime
 
+id_counter = 1
 tasks = []
 
 
@@ -9,6 +10,9 @@ tasks = []
 
 class Task:
     def __init__(self, description):
+        global id_counter
+        self.id = id_counter
+        id_counter += 1
         self.description = description
         self.status = 'pending'
         self.date = datetime.now().date().strftime("%b-%d-%Y")
@@ -79,9 +83,9 @@ def remove_task(id):
     """
     Deletes a task from the list by id
     """
-    for i in range(len(tasks)):
-        if tasks[i].id == id:
-            tasks[i] = None
+    for task in tasks:
+        if task.id == id:
+            task = None
             return
 
 
