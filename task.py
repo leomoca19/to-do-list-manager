@@ -1,112 +1,126 @@
 from datetime import datetime
-
-id_counter = 1
-tasks = []
-
+from utilities import prompt
 
 # Features to Implement:
 # Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
 
 
-class Task:
-    def __init__(self, description):
-        global id_counter
-        self.id = id_counter
-        id_counter += 1
-        self.description = description
-        self.status = 'pending'
-        self.date = datetime.now().date().strftime("%b-%d-%Y")
+class TaskManager:
+    class Task:
+        def __init__(self, description, id):
+            self.id = id
+            self.description = description
+            self.status = 'pending'
+            self.date = datetime.now().date().strftime("%b-%d-%Y")
 
-    def __str__(self):
-        return f'{self.date} - {self.status}: {self.description}'
+        def __str__(self):
+            return f'ID: {self.id} - {self.description}\n{self.date} - {self.status}\n'
 
+    def __init__(self, id_counter=1):
+        self.id_counter = id_counter
+        self.tasks = []
 
-def view_tasks(status=None):
-    """
-    Display all current tasks with an option to view completed and pending tasks separately.
-    """
-    for task in tasks:
-        if task:
-            if status and status != task.status:
-                continue
-            print(task)
-    print()
+    def add_sample_task(self, x):
+        """
+        adds x sample tasks
+        """
 
+        s = self
+        for i in range(x):
+            s.tasks.append(s.Task('sample', s.id_counter))
+            s.id_counter += 1
 
-def add_task(task=None):
-    """
-    Adds a new tasks to the to-do list by prompting or argument
-    """
-    new_task = task if task else Task(input())
-    tasks.append(new_task)
+    def view_tasks(self, status=None):
+        """
+        Display all current tasks with an option to view completed and pending tasks separately.
+        """
 
+        if len(self.tasks):
+            for task in self.tasks:
+                if task:
+                    if status and status != task.status:
+                        continue
+                    print(task)
 
-def update_task(id):
-    """
-    Allow the user to mark tasks as complete and edit the task details
-    """
-    if task := tasks[id]:
-        print('Task selected: ')
-        task.display()
-        print()
+        else:
+            print('No tasks')
 
-        repeat = True
-        while repeat:
-            print('Mark as completed? y|n: ', end='')
+    def add_task(self, task=None):
+        """
+        Adds a new tasks to the to-do list by prompting or argument
+        """
+        new_task = task if task else self.Task(input(), self.id_counter)
+        self.id_counter += 1
 
-            if answer := input().lower() in ['y', 'n']:
-                repeat = False
-                if answer == 'y':
-                    task.status = 'completed'
+        self.tasks.append(new_task)
 
-            else:
-                print('Bad input')
+    def update_task(self, id):
+        """
+        Allow the user to mark tasks as complete and edit the task details
+        """
+        if task := self.tasks[id]:
+            print('Task selected: ')
+            task.display()
+            print()
 
-        repeat = True
-        while repeat:
-            print('Update description? y|n: ', end='')
+            repeat = True
+            while repeat:
+                print('Mark as completed? y|n: ', end='')
 
-            if input().lower() in ['y', 'n']:
-                repeat = False
-                print('New description: ', end='')
-                task.description = input()
+                if answer := input().lower() in ['y', 'n']:
+                    repeat = False
+                    if answer == 'y':
+                        task.status = 'completed'
 
-            else:
-                print('Bad input')
+                else:
+                    print('Bad input')
 
+            repeat = True
+            while repeat:
+                print('Update description? y|n: ', end='')
 
-def remove_task(id):
-    """
-    Deletes a task from the list by id
-    """
-    for task in tasks:
-        if task.id == id:
-            task = None
-            return
+                if input().lower() in ['y', 'n']:
+                    repeat = False
+                    print('New description: ', end='')
+                    task.description = input()
 
+                else:
+                    print('Bad input')
 
-def save_to_file(file_name):
-    """
-    Saves tasks in a file
-    """
+    def remove_task(self, id):
+        """
+        Deletes a task from the list by id
+        """
 
-    with open(file_name, 'w') as file:
-        for task in tasks:
-            file.write(task)
+        task = self.tasks[i := 0]
+        while task and task.id <= id:
+            if task.id == id:
+                self.tasks.remove(task)
+                return
 
-    # with open(filename, 'w') as file:
-    #     json.dump(tasks, file)
+            i += 1
+            task = self.tasks[i]
 
+        print('Task ID not found')
 
-def load_from_file():
-    """
-    Loads tasks in a file
-    """
+    def save_to_file(self, file_name):
+        """
+        Saves tasks in a file
+        """
 
-    # global tasks
-    # try:
-    #     with open(filename, 'r') as file:
-    #         tasks = json.load(file)
-    # except FileNotFoundError:
-    #     tasks = []
-    pass
+        with open(file_name, 'w') as file:
+            for task in self.tasks:
+                file.write(task)
+
+    def load_from_file(self, ):
+        """
+        Loads tasks in a file
+        """
+
+        # global tasks
+        # try:
+        #     with open(filename, 'r') as file:
+        #         tasks = json.load(file)
+        # except FileNotFoundError:
+        #     tasks = []
+        pass
