@@ -1,5 +1,4 @@
 from datetime import datetime
-from utilities import prompt
 
 # Features to Implement:
 # Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
