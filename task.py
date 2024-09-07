@@ -74,50 +74,35 @@ class TaskManager:
         """
         Allow the user to mark tasks as complete and edit the task details
         """
-        if task := self.tasks[id]:
-            print('Task selected: ')
-            task.display()
-            print()
 
-            repeat = True
-            while repeat:
-                print('Mark as completed? y|n: ', end='')
+        i = self.find_by_id(id)
+        if i is not None:
+            task = self.tasks[i]
+            print('Task selected: ', task)
 
-                if answer := input().lower() in ['y', 'n']:
-                    repeat = False
-                    if answer == 'y':
-                        task.status = 'completed'
+            while (answer := input('Mark as completed? y|n:')) not in ['y', 'n']:
+                print('Bad input')
+            if answer == 'y':
+                task.status = 'completed'
 
-                else:
-                    print('Bad input')
+            while (answer := input('Update description? y|n:')) not in ['y', 'n']:
+                print('Bad input')
+            if answer == 'y':
+                task.status = input('Enter new description:')
 
-            repeat = True
-            while repeat:
-                print('Update description? y|n: ', end='')
-
-                if input().lower() in ['y', 'n']:
-                    repeat = False
-                    print('New description: ', end='')
-                    task.description = input()
-
-                else:
-                    print('Bad input')
+        else:
+            print('Task not found')
 
     def remove_task(self, id):
         """
         Deletes a task from the list by id
         """
 
-        task = self.tasks[i := 0]
-        while task and task.id <= id:
-            if task.id == id:
-                self.tasks.remove(task)
-                return
-
-            i += 1
-            task = self.tasks[i]
-
-        print('Task ID not found')
+        i = self.find_by_id(id)
+        if i is not None:
+            del self.tasks[i]
+        else:
+            print('Task ID not found')
 
     def save_to_file(self, file_name):
         """
@@ -126,9 +111,9 @@ class TaskManager:
 
         with open(file_name, 'w') as file:
             for task in self.tasks:
-                file.write(task)
+                file.write(str(task))
 
-    def load_from_file(self, ):
+    def load_from_file(self, file_name):
         """
         Loads tasks from a file
         """
