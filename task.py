@@ -44,7 +44,7 @@ class TaskManager:
 
         s = self
         for i in range(x):
-            s.tasks.append(s.Task('sample', s.id_counter))
+            s.tasks.append(s.Task(s.id_counter, 'sample'))
             s.id_counter += 1
 
     def view_tasks(self, status=None):
