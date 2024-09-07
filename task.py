@@ -24,6 +24,19 @@ class TaskManager:
         self.id_counter = id_counter
         self.tasks = []
 
+    def find_by_id(self, id):
+        """
+        :param id: the task id
+        :return: index of the task with the given id
+        """
+
+        for i, task in enumerate(self.tasks):
+            if task.id > id:
+                return None
+
+            if task.id == id:
+                return i
+
     def add_sample_task(self, x):
         """
         adds x sample tasks
