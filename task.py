@@ -130,13 +130,26 @@ class TaskManager:
 
     def load_from_file(self, ):
         """
-        Loads tasks in a file
+        Loads tasks from a file
         """
 
-        # global tasks
-        # try:
-        #     with open(filename, 'r') as file:
-        #         tasks = json.load(file)
-        # except FileNotFoundError:
-        #     tasks = []
-        pass
+        with open(file_name, 'r') as file:
+            line = file.readline()
+
+            # discard 'ID: '
+            line = line[4:-1]
+
+            # read ID
+            id = line[:2]
+
+            # discard ' - '
+            line = line[2:]
+
+            # read description without '\n'
+            description = line
+
+            line = file.readline()
+            status = ''
+            date = ''
+
+            self.add_task(self.Task(id, description, status, date))
