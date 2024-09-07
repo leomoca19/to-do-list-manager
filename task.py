@@ -66,7 +66,7 @@ class TaskManager:
         """
         Adds a new tasks to the to-do list by prompting or argument
         """
-        new_task = task if task else self.Task(input(), self.id_counter)
+        new_task = task if task else self.Task(self.id_counter, input())
         self.id_counter += 1
 
         self.tasks.append(new_task)
