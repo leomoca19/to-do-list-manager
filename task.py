@@ -7,11 +7,15 @@ from utilities import prompt
 
 class TaskManager:
     class Task:
-        def __init__(self, description, id):
+        def __init__(self,
+                     id,
+                     description,
+                     status='pending',
+                     date=datetime.now().date().strftime("%b-%d-%Y")):
             self.id = id
             self.description = description
-            self.status = 'pending'
-            self.date = datetime.now().date().strftime("%b-%d-%Y")
+            self.status = status
+            self.date = date
 
         def __str__(self):
             return f'ID: {self.id} - {self.description}\n{self.date} - {self.status}\n'
