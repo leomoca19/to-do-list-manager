@@ -11,11 +11,11 @@ DEBUG = True
 if __name__ == '__main__':
     TM = TaskManager()
 
+    TM.load_from_file('tasks.txt')
     welcome()
 
     if DEBUG:
         TM.add_sample_task(5)
 
-    TM.update_task(1)
-
     goodbye()
+    TM.save_to_file('tasks.txt')
