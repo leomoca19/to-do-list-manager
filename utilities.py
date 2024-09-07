@@ -22,21 +22,24 @@ def prompt(question, answers=None):
     :return: the validated answer
     """
 
-    print_(question)
+    full_str = question
 
-    # store the accepted answers
-    answers_str = ''
-
+    # add possible answers
     if answers:
-        answers_str += answers[0]
+        full_str += ' ' + '|'.join(answers)
 
-        if answers[1]:
-            for i in range(1, len(answers[1])):
-                answers_str += (' | ' + answers[i])
-
-    # display a character to show the user should input
-    print_(': ')
+    # character to show the user should input
+    full_str += ': '
 
     # validate answer
-    if answer := input().lower() in answers:
-        pass
+    while True:
+        print(full_str)
+
+        if answers:
+            return input()
+
+        if (answer := input()) in answers:
+            return answer
+
+        print('Bad input')
+
