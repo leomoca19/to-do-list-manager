@@ -119,22 +119,28 @@ class TaskManager:
         """
 
         with open(file_name, 'r') as file:
-            line = file.readline()
 
-            # discard 'ID: '
-            line = line[4:-1]
+            # while the line is not empty
+            while line := file.readline():
 
-            # read ID
-            id = line[:2]
+                # if this is the last line of the file, stop
+                if line[:9] == 'last id: ':
+                    self.id_counter = int(line[9:])
+                    break
 
-            # discard ' - '
-            line = line[2:]
+                # discard 'ID: '
+                line = line[4:-1]
 
-            # read description without '\n'
-            description = line
+                # read ID
+                id = line[:2]
 
-            line = file.readline()
-            status = ''
-            date = ''
+                # discard ' - ' and read description without '\n'
+                description = line[2:]
 
-            self.add_task(self.Task(id, description, status, date))
+                line = file.readline()
+
+                date = line[:11]  # read date
+
+                status = line[15:]  # discard ' - ' and read status
+
+                self.add_task(self.Task(id, description, status, date))
