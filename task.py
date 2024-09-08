@@ -138,7 +138,6 @@ class TaskManager:
                 line = file.readline()
 
                 date = line[:11]  # read date
-
                 status = line[15:]  # discard ' - ' and read status
 
                 self.add_task(self.Task(id, description, status, date))
