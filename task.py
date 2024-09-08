@@ -112,6 +112,7 @@ class TaskManager:
         with open(file_name, 'w') as file:
             for task in self.tasks:
                 file.write(str(task))
+            file.write('last id: ' + str(self.id_counter))
 
     def load_from_file(self, file_name):
         """
