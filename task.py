@@ -13,8 +13,8 @@ class TaskManager:
                      date=datetime.now().date().strftime("%b-%d-%Y")):
             self.id = id
             self.description = description
-            self.status = status
             self.date = date
+            self.status = status
 
         def __str__(self):
             return f'ID: {self.id} - {self.description}\n{self.date} - {self.status}\n'
