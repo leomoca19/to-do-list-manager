@@ -129,11 +129,8 @@ class TaskManager:
                     self.id_counter = int(line[9:])
                     break
 
-                # discard 'ID: '
-                line = line[4:-1]
-
-                # read ID
-                id = line[:2]
+                line = line[4:-1]  # discard 'ID: '
+                id = line[:2]  # read ID
 
                 # discard ' - ' and read description without '\n'
                 description = line[2:]
