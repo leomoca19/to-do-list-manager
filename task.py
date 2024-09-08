@@ -124,7 +124,7 @@ class TaskManager:
             # while the line is not empty
             while line := file.readline():
 
-                # if this is the last line of the file, stop
+                # if this is the last line of the file, stop reading
                 if line[:9] == 'last id: ':
                     self.id_counter = int(line[9:])
                     break
