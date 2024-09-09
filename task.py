@@ -1,4 +1,5 @@
 from datetime import datetime
+from utilities import prompt
 
 
 date_format = "%b-%d-%Y"
@@ -64,14 +65,12 @@ class TaskManager:
         else:
             print('No tasks')
 
-    def add_task(self, task=None):
+    def add_task(self, description):
         """
         Adds a new tasks to the to-do list by prompting or argument
         """
-        new_task = task if task else self.Task(self.id_counter, input())
+        self.tasks.append(self.Task(self.id_counter, description))
         self.id_counter += 1
-
-        self.tasks.append(new_task)
 
     def update_task(self, id):
         """
@@ -81,15 +80,13 @@ class TaskManager:
         i = self.find_by_id(id)
         if i is not None:
             task = self.tasks[i]
-            print('Task selected: ', task)
+            print(f'Task selected: {task}')
 
-            while (answer := input('Mark as completed? y|n:')) not in ['y', 'n']:
-                print('Bad input')
+            answer = prompt('Mark as completed?', ['y', 'n'])
             if answer == 'y':
                 task.status = 'completed'
 
-            while (answer := input('Update description? y|n:')) not in ['y', 'n']:
-                print('Bad input')
+            answer = prompt('Update description?', ['y', 'n'])
             if answer == 'y':
                 task.status = input('Enter new description:')
 
@@ -99,11 +96,14 @@ class TaskManager:
     def remove_task(self, id):
         """
         Deletes a task from the list by id
+        :return: the deleted task
         """
 
         i = self.find_by_id(id)
         if i is not None:
+            tmp = self.tasks[i]
             del self.tasks[i]
+            return tmp
         else:
             print('Task ID not found')
 
@@ -115,7 +115,7 @@ class TaskManager:
         with open(file_name, 'w') as file:
             for task in self.tasks:
                 file.write(str(task))
-            file.write('last id: ' + str(self.id_counter))
+            file.write('last id: ' + str(self.id_counter) + '\n')
 
     def load_from_file(self, file_name):
         """
