@@ -43,3 +43,15 @@ def prompt(question, answers=None):
 
         print('Bad input')
 
+
+def get_id(string):
+    """
+    prompts string and accepts only integers
+    """
+
+    while True:
+        answer = input(string)
+        if answer.isdigit():
+            return int(answer)
+        else:
+            print('Bad input')
