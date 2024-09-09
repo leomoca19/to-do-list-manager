@@ -23,6 +23,9 @@ class TaskManager:
         self.id_counter = id_counter
         self.tasks = []
 
+    def __len__(self):
+        return len(self.tasks)
+
     def find_by_id(self, id):
         """
         :param id: the task id
