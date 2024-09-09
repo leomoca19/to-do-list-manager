@@ -3,5 +3,4 @@
 .idea/
 
 # IO file
-/tasks.txt
-/todo-list-manager-release.py
+tasks.txt
