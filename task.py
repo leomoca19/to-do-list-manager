@@ -2,16 +2,13 @@ from datetime import datetime
 from utilities import prompt
 
 
-date_format = "%b-%d-%Y"
-
-
 class TaskManager:
     class Task:
         def __init__(self,
                      id,
                      description,
                      status='pending',
-                     date=datetime.now().date().strftime(date_format)):
+                     date=datetime.now().date().strftime("%b-%d-%Y")):
             self.id = id
             self.description = description
             self.date = date
