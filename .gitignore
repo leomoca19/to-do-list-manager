@@ -1,3 +1,6 @@
 # IDE folders
 .venv/
 .idea/
+
+# IO file
+tasks.txt
