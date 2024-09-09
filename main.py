@@ -29,8 +29,7 @@ def run():
                 print(f'Task added:{tm.tasks[-1]}')
             case '3':
                 id = get_id('Select a Task ID: ')
-                tm.update_task(id)
-                print(f'Updated task:\n{tm.tasks[id]}')
+                print(f'Updated task:\n{tm.update_task(id)}')
 
             case '4':
                 id = get_id('Select a Task ID: ')
