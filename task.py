@@ -129,11 +129,12 @@ class TaskManager:
                     self.id_counter = int(line[9:])
                     break
 
-                line = line[4:-1]  # discard 'ID: '
-                id = line[:2]  # read ID
+                line = line[4:-1]  # discard 'ID: ' and \n
+                empty_pos = line.find(' ')
+                id = int(line[:empty_pos])  # read ID
 
-                # discard ' - ' and read description without '\n'
-                description = line[2:]
+                # discard ' - ' and read description
+                description = line[empty_pos + 3:]
 
                 line = file.readline()
 
