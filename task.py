@@ -1,7 +1,7 @@
 from datetime import datetime
 
-# Features to Implement:
-# Save and Load Tasks: Persist tasks in a file so that they can be retrieved when the application is reopened.
+
+date_format = "%b-%d-%Y"
 
 
 class TaskManager:
