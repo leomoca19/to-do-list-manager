@@ -9,33 +9,38 @@ from utilities import welcome, goodbye, prompt, get_id
 
 if __name__ == '__main__':
     TM = TaskManager()
+    tm = TaskManager()
 
-    TM.load_from_file('tasks.txt')
+    tm.load_from_file('tasks.txt')
     welcome()
 
     header = ('Exit 0 | View Tasks 1 | Add Task 2 | Update Task 3 | Delete Task 4\n'
               'Select an option')
 
-    while answer := prompt(f'Tasks in system: {len(TM)}\n' + header, ['0', '1', '2', '3', '4']):
+    while answer := prompt(f'Tasks in system: {len(tm)}\n' + header, ['0', '1', '2', '3', '4']):
         match answer:
             case '0':
                 answer = prompt('Are you sure you want to exit', ['y', 'n'])
                 if answer == 'y':
                     break
             case '1':
-                TM.view_tasks()
+                tm.view_tasks()
             case '2':
-                TM.add_task(prompt('Enter a description of your new task'))
-                print(f'Task added:{TM.tasks[-1]}')
+                tm.add_task(prompt('Enter a description of your new task'))
+                print(f'Task added:{tm.tasks[-1]}')
             case '3':
                 id = get_id('Select a Task ID: ')
-                TM.update_task(id)
-                print(f'Updated task:\n{TM.tasks[id]}')
+                tm.update_task(id)
+                print(f'Updated task:\n{tm.tasks[id]}')
 
             case '4':
                 id = get_id('Select a Task ID: ')
-                tmp = TM.remove_task(id)
-                print(f'Deleted task:\n{TM.tasks[id]}')
+                tmp = tm.remove_task(id)
+                print(f'Deleted task:\n{tm.tasks[id]}')
 
     goodbye()
-    TM.save_to_file('tasks.txt')
+    tm.save_to_file('tasks.txt')
+
+
+if __name__ == '__main__':
+    run()
