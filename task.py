@@ -10,7 +10,7 @@ class TaskManager:
                      id,
                      description,
                      status='pending',
-                     date=datetime.now().date().strftime("%b-%d-%Y")):
+                     date=datetime.now().date().strftime(date_format)):
             self.id = id
             self.description = description
             self.date = date
