@@ -4,9 +4,8 @@ The tasks will be stored in a local file so that the user’s to-do list persist
 """
 
 from task import TaskManager
-from utilities import welcome, goodbye
+from utilities import welcome, goodbye, prompt, get_id
 
-DEBUG = True
 
 if __name__ == '__main__':
     TM = TaskManager()
@@ -14,8 +13,29 @@ if __name__ == '__main__':
     TM.load_from_file('tasks.txt')
     welcome()
 
-    if DEBUG:
-        TM.add_sample_task(5)
+    header = ('Exit 0 | View Tasks 1 | Add Task 2 | Update Task 3 | Delete Task 4\n'
+              'Select an option')
+
+    while answer := prompt(f'Tasks in system: {len(TM)}\n' + header, ['0', '1', '2', '3', '4']):
+        match answer:
+            case '0':
+                answer = prompt('Are you sure you want to exit', ['y', 'n'])
+                if answer == 'y':
+                    break
+            case '1':
+                TM.view_tasks()
+            case '2':
+                TM.add_task(prompt('Enter a description of your new task'))
+                print(f'Task added:{TM.tasks[-1]}')
+            case '3':
+                id = get_id('Select a Task ID: ')
+                TM.update_task(id)
+                print(f'Updated task:\n{TM.tasks[id]}')
+
+            case '4':
+                id = get_id('Select a Task ID: ')
+                tmp = TM.remove_task(id)
+                print(f'Deleted task:\n{TM.tasks[id]}')
 
     goodbye()
     TM.save_to_file('tasks.txt')
