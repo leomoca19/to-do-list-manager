@@ -121,7 +121,6 @@ class TaskManager:
 
         with open(file_name, 'r') as file:
 
-            # while the line is not empty
             while line := file.readline():
 
                 # if this is the last line of the file, stop reading
@@ -129,16 +128,17 @@ class TaskManager:
                     self.id_counter = int(line[9:])
                     break
 
-                line = line[4:-1]  # discard 'ID: ' and \n
-                empty_pos = line.find(' ')
-                id = int(line[:empty_pos])  # read ID
+                skip_str = 4  # discard 'ID: '
+                empty_pos = line.find(' ', skip_str)
 
-                # discard ' - ' and read description
-                description = line[empty_pos + 3:]
+                id = int(line[skip_str:empty_pos])  # read ID
+                description = line[empty_pos + 3:-1]  # discard ' - ', '\n' and read description
 
                 line = file.readline()
+                empty_pos = line.find(' ')
 
-                date = line[:11]  # read date
-                status = line[15:]  # discard ' - ' and read status
+                date = line[:empty_pos]  # read date
+                status = line[empty_pos + 3:-1]  # discard ' - ' and '\n' and read status
 
-                self.add_task(self.Task(id, description, status, date))
+                new_task = self.Task(id, description, status, date)
+                self.tasks.append(new_task)
