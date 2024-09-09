@@ -33,7 +33,7 @@ def prompt(question, answers=None):
 
     # validate answer
     while True:
-        print(full_str)
+        print_(full_str)
 
         if answers:
             return input()
