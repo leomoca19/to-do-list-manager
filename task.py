@@ -72,6 +72,7 @@ class TaskManager:
     def update_task(self, id):
         """
         Allow the user to mark tasks as complete and edit the task details
+        :return: the updated task
         """
 
         i = self.find_by_id(id)
@@ -86,6 +87,8 @@ class TaskManager:
             answer = prompt('Update description?', ['y', 'n'])
             if answer == 'y':
                 task.status = input('Enter new description:')
+
+            return task
 
         else:
             print('Task not found')
