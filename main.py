@@ -33,8 +33,7 @@ def run():
 
             case '4':
                 id = get_id('Select a Task ID: ')
-                tmp = tm.remove_task(id)
-                print(f'Deleted task:\n{tm.tasks[id]}')
+                print(f'Deleted task:\n{tm.remove_task(id)}')
 
     goodbye()
     tm.save_to_file('tasks.txt')
