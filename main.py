@@ -7,8 +7,7 @@ from task import TaskManager
 from utilities import welcome, goodbye, prompt, get_id
 
 
-if __name__ == '__main__':
-    TM = TaskManager()
+def run():
     tm = TaskManager()
 
     tm.load_from_file('tasks.txt')
