@@ -35,7 +35,7 @@ def prompt(question, answers=None):
     while True:
         print_(full_str)
 
-        if answers:
+        if not answers:
             return input()
 
         if (answer := input()) in answers:
