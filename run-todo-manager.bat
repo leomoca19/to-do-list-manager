@@ -1,1 +1,2 @@
-python C:\source\to-do-list-manager\main.py
+cd C:\source\to-do-list-manager
+python main.py
