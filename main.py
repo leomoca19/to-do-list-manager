@@ -2,61 +2,10 @@
 Simple command-line application to manage tasks, including adding, updating, deleting, and displaying tasks.
 The tasks will be stored in a local file so that the user to-do list persists between sessions.
 """
+import sys
+sys.path.append('C:/source/to-do-list-manager')
 
-from task import TaskManager
-from utilities import welcome, goodbye, prompt, get_id
-
-
-def run():
-    tm = TaskManager()
-
-    tm.load_from_file('tasks.txt')
-    welcome()
-
-    header = ('Exit 0 | View Tasks 1 | Add Task 2 | Update Task 3 | Delete Task 4\n'
-              'Select an option')
-    good_ans = ['0', '1', '2', '3', '4']
-
-    while answer := prompt(f'Tasks in system: {len(tm)}\n' + header, good_ans):
-        match answer:
-            case '0':
-                _header = 'Are you sure you want to save and exit'
-                _good_ans = ['y', 'n']
-
-                if prompt(_header, _good_ans) == 'y':
-                    break
-
-            case '1':
-                _header = ('All 0 | Pending 1 | Completed 2\n'
-                           'Select an option')
-                _good_ans = ['0', '1', '2']
-
-                # transform int input to task status
-                match answer := int(prompt(_header, _good_ans)):
-                    case 0:
-                        answer = None
-                    case 1:
-                        answer = 'pending'
-                    case 2:
-                        answer = 'completed'
-
-                tm.view_tasks(answer)
-
-            case '2':
-                tm.add_task(prompt('Enter a description of your new task'))
-                print(f'Task added:{tm.tasks[-1]}')
-
-            case '3':
-                id = get_id('Select a Task ID: ')
-                print(f'Updated task:\n{tm.update_task(id)}')
-
-            case '4':
-                id = get_id('Select a Task ID: ')
-                print(f'Deleted task:\n{tm.remove_task(id)}')
-
-    goodbye()
-    tm.save_to_file('tasks.txt')
-
+from task import run
 
 if __name__ == '__main__':
     run()
