@@ -110,13 +110,10 @@ class TaskManager:
         Display all current tasks with an option to view completed and pending tasks separately.
         """
 
-        if len(self.tasks):
-            for task in self.tasks:
-                if task:
-                    if status and status != task.status:
-                        continue
-                    print(task)
-
+        if len(ts := self.tasks):
+            # create a list of desired tasks to print
+            print(*[t for t in ts if not status or t.status == status],
+                  sep='\n')
         else:
             print('No tasks')
 
@@ -205,26 +202,51 @@ class TaskManager:
                 self.tasks.append(new_task)
 
 
-def run():
+def run(io_file='tasks.txt'):
+    """
+    run the application
+
+    :param io_file: name of the file to read from and write to
+    """
+
     tm = TaskManager()
 
-    tm.load_from_file('tasks.txt')
+    tm.load_from_file(io_file)
     welcome()
 
     header = ('Exit 0 | View Tasks 1 | Add Task 2 | Update Task 3 | Delete Task 4\n'
               'Select an option')
+    good_ans = ['0', '1', '2', '3', '4']
 
-    while answer := prompt(f'Tasks in system: {len(tm)}\n' + header, ['0', '1', '2', '3', '4']):
+    while answer := prompt(f'Tasks in system: {len(tm)}\n' + header, good_ans):
         match answer:
             case '0':
-                answer = prompt('Are you sure you want to exit', ['y', 'n'])
-                if answer == 'y':
+                _header = 'Are you sure you want to save and exit'
+                _good_ans = ['y', 'n']
+
+                if prompt(_header, _good_ans) == 'y':
                     break
+
             case '1':
-                tm.view_tasks()
+                _header = ('All 0 | Pending 1 | Completed 2\n'
+                           'Select an option')
+                _good_ans = ['0', '1', '2']
+
+                # transform int input to task status
+                match answer := int(prompt(_header, _good_ans)):
+                    case 0:
+                        answer = None
+                    case 1:
+                        answer = 'pending'
+                    case 2:
+                        answer = 'completed'
+
+                tm.view_tasks(answer)
+
             case '2':
                 tm.add_task(prompt('Enter a description of your new task'))
                 print(f'Task added:{tm.tasks[-1]}')
+
             case '3':
                 id = get_id('Select a Task ID: ')
                 print(f'Updated task:\n{tm.update_task(id)}')
