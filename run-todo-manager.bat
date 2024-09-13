@@ -1,0 +1,1 @@
+python C:\source\to-do-list-manager\main.py
