@@ -15,12 +15,15 @@ def run():
 
     header = ('Exit 0 | View Tasks 1 | Add Task 2 | Update Task 3 | Delete Task 4\n'
               'Select an option')
+    good_ans = ['0', '1', '2', '3', '4']
 
-    while answer := prompt(f'Tasks in system: {len(tm)}\n' + header, ['0', '1', '2', '3', '4']):
+    while answer := prompt(f'Tasks in system: {len(tm)}\n' + header, good_ans):
         match answer:
             case '0':
-                answer = prompt('Are you sure you want to exit', ['y', 'n'])
-                if answer == 'y':
+                _header = 'Are you sure you want to save and exit'
+                _good_ans = ['y', 'n']
+
+                if prompt(_header, _good_ans) == 'y':
                     break
             case '1':
                 tm.view_tasks()
