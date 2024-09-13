@@ -52,13 +52,10 @@ class TaskManager:
         Display all current tasks with an option to view completed and pending tasks separately.
         """
 
-        if len(self.tasks):
-            for task in self.tasks:
-                if task:
-                    if status and status != task.status:
-                        continue
-                    print(task)
-
+        if len(ts := self.tasks):
+            # create a list of desired tasks to print
+            print(*[t for t in ts if not status or t.status == status],
+                  sep='\n')
         else:
             print('No tasks')
 
