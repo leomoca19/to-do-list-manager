@@ -199,3 +199,7 @@ def run(io_file='tasks.txt'):
 
     goodbye()
     tm.save_to_file('tasks.txt')
+
+
+if __name__ == '__main__':
+    run()
