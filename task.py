@@ -52,10 +52,20 @@ class TaskManager:
         Display all current tasks with an option to view completed and pending tasks separately.
         """
 
-        if len(ts := self.tasks):
-            # create a list of desired tasks to print
-            print(*[t for t in ts if not status or t.status == status],
-                  sep='\n')
+        if n := len(ts := self.tasks):
+            if status == 'next':
+                # find first pending task
+                while ts[i := 0].status != 'pending':
+                    i += 1
+
+                if i < n:
+                    print(ts[i])
+                else:
+                    print('No pending Tasks')
+            else:
+                # create a list of desired tasks to print
+                print(*[t for t in ts if not status or t.status == status],
+                      sep='\n')
         else:
             print('No tasks')
 
@@ -170,9 +180,9 @@ def run(io_file='tasks.txt'):
                     break
 
             case '1':
-                _header = ('All 0 | Pending 1 | Completed 2\n'
+                _header = ('All 0 | Pending 1 | Completed 2 | Next Task 3\n'
                            'Select an option')
-                _good_ans = ['0', '1', '2']
+                _good_ans = ['0', '1', '2', '3']
 
                 # transform int input to task status
                 match answer := int(prompt(_header, _good_ans)):
@@ -182,6 +192,8 @@ def run(io_file='tasks.txt'):
                         answer = 'pending'
                     case 2:
                         answer = 'completed'
+                    case 3:
+                        answer = 'next'
 
                 tm.view_tasks(answer)
 
