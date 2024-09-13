@@ -26,7 +26,20 @@ def run():
                 if prompt(_header, _good_ans) == 'y':
                     break
             case '1':
-                tm.view_tasks()
+                _header = ('All 0 | Pending 1 | Completed 2\n'
+                           'Select an option')
+                _good_ans = ['0', '1', '2']
+
+                # transform int input to task status
+                match answer := int(prompt(_header, _good_ans)):
+                    case 0:
+                        answer = None
+                    case 1:
+                        answer = 'pending'
+                    case 2:
+                        answer = 'completed'
+
+                tm.view_tasks(answer)
             case '2':
                 tm.add_task(prompt('Enter a description of your new task'))
                 print(f'Task added:{tm.tasks[-1]}')
