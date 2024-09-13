@@ -1,11 +1,33 @@
-ID: 1 - sample
+ID: 1 - Module 1 DPS
+Sep-08-2024 - completed
+ID: 2 - Module 2 DPS
 Sep-08-2024 - pending
-ID: 2 - sample
+ID: 3 - redo Workshop 1 BTH with issues
 Sep-08-2024 - pending
-ID: 3 - sample
+ID: 4 - redo Workshop 1 BTH with issues
 Sep-08-2024 - pending
-ID: 4 - sample
+ID: 5 - redo Workshop 1 BTH with issues
 Sep-08-2024 - pending
-ID: 5 - sample
-Sep-08-2024 - pending
-last id: 6
+ID: 6 - finish qt tutorial
+Sep-11-2024 - pending
+ID: 7 - play with unreal engine
+Sep-11-2024 - pending
+ID: 8 - create empty UE project
+Sep-11-2024 - pending
+ID: 9 - create button in designer window
+Sep-11-2024 - pending
+ID: 10 - show error msg to prof
+Sep-11-2024 - pending
+ID: 11 - finish Q7,9Act1Btl100
+Sep-11-2024 - pending
+ID: 12 - watch 2nd week Lso folder
+Sep-11-2024 - pending
+ID: 13 - make notes Bab100
+Sep-11-2024 - pending
+ID: 14 - watch video bab - slide 38
+Sep-11-2024 - pending
+ID: 15 - get team bab
+Sep-11-2024 - pending
+ID: 16 - apply to 5 jobs in Seneca works
+Sep-11-2024 - pending
+last id: 17
