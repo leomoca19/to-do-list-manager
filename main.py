@@ -25,6 +25,7 @@ def run():
 
                 if prompt(_header, _good_ans) == 'y':
                     break
+
             case '1':
                 _header = ('All 0 | Pending 1 | Completed 2\n'
                            'Select an option')
@@ -40,9 +41,11 @@ def run():
                         answer = 'completed'
 
                 tm.view_tasks(answer)
+
             case '2':
                 tm.add_task(prompt('Enter a description of your new task'))
                 print(f'Task added:{tm.tasks[-1]}')
+
             case '3':
                 id = get_id('Select a Task ID: ')
                 print(f'Updated task:\n{tm.update_task(id)}')
