@@ -8,4 +8,8 @@ sys.path.append('C:/source/to-do-list-manager')
 from task import run
 
 if __name__ == '__main__':
-    run()
+    try:
+        run()
+    except ImportError as e:
+        print(F'Error importing module + {e}')
+        input('Press enter to exit')
