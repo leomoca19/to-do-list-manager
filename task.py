@@ -60,7 +60,7 @@ class TaskManager:
                     i += 1
 
                 if i < n:
-                    print(f'Next Task\nts[i]')
+                    print(f'Next Task:\n{ts[i]}')
                 else:
                     print('No pending Tasks')
             else:
