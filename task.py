@@ -55,11 +55,12 @@ class TaskManager:
         if n := len(ts := self.tasks):
             if status == 'next':
                 # find first pending task
-                while ts[i := 0].status != 'pending':
+                i = 0
+                while ts[i].status != 'pending':
                     i += 1
 
                 if i < n:
-                    print(ts[i])
+                    print(f'Next Task\nts[i]')
                 else:
                     print('No pending Tasks')
             else:
